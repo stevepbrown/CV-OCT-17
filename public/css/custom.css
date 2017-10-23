@@ -1,0 +1,99 @@
+
+
+/*  'Room to breathe'*/
+.rtb {
+
+  margin:3em;
+
+}
+
+.bullet-list>li {
+
+  list-style:circle;
+  line-height: 3em;
+
+}
+
+#content-container{
+
+  min-height:90vw;
+}
+
+#sticky-footer {
+
+  position: fixed;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  height:60px;
+  padding:20px;
+
+}
+
+#p-success {
+
+  font-size:1.8em;
+  font-color: #228B22;
+  margin:0;
+  padding:0;
+
+}
+
+/* MEDIA QUERIES FOR IMAGE */
+
+/* Derfault for bootstrap xs devices*/
+#portrait {
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height:415px;
+  padding:0;
+  margin-top:0;
+  margin-botom:0;
+  margin-left:-20%;
+
+}
+
+
+/* xs-devices */
+@media (min-width:320px) and (max-width:767px){
+
+  #portrait {
+
+    box-sizing: border-box;
+    max-width:350px;
+    margin:auto;
+
+  }
+
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #portrait {
+    box-sizing: border-box;
+    max-width:350px;
+    margin:auto;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #portrait {
+    box-sizing: border-box;
+    max-width:350px;
+    margin-left:-10%;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+  #portrait {
+    box-sizing: border-box;
+    max-width:350px;
+    margin:5em +25% auto -25%;
+  }
+
+}
