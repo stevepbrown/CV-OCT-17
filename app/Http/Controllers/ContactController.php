@@ -46,7 +46,7 @@ class ContactController extends Controller
            'referral'=> 'nullable|integer',
            'description'=>'required|filled',
 
-       ]);
+       ])->with('input');
     $contact = new Contact;
 
     $contact->first_name= $request->first_name;

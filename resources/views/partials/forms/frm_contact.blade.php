@@ -5,14 +5,28 @@
 
 
 <div class="container rtb">
-  <div class="form-group has-error has-feedback">
-        {!! Form::label('first_name', 'First Name') !!}
-        {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
-        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-  </div>
+  {{-- Check if there is an error in the first name and render
+  the form-group and form-control with necessary boostrap classes
+  --}}
+{{-- TODO: remove this!  --}}
+
+  @if ($errors->has('first_name')) <!-- error  -->
+    <div class="form-group has-error has-feedback">
+      {!! Form::label('first_name', 'First Name') !!}
+      {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+    </div>
+  @else <!-- success -->
+    <div class="form-group has-success has-feedback">
+      {!! Form::label('first_name', 'First Name') !!}
+      {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  @endif
+
 
     {!! Form::label('surname', 'Surname') !!}
-    {!! Form::text('surname', null, ['class' => 'form-control']) !!}
+  {!! Form::text('surname', null, ['class' => 'form-control']) !!}
 
   <div class="form-group">
     {!! Form::label('email', 'Email address') !!}
@@ -44,4 +58,4 @@
     </div>
   </div>
 
-    {!! Form::close() !!}
+  {!! Form::close() !!}
