@@ -4,27 +4,16 @@
 {!! Form::open(['route'=>'contacts.store']) !!}
 
 
-@foreach ($errors->all() as $message)
-  <p>{{$message}}</p>
-@endforeach
-
-
-
-
 <div class="container rtb">
+  <div class="form-group has-error has-feedback">
+        {!! Form::label('first_name', 'First Name') !!}
+        {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
 
-  <div class="form-group">
-    {!! Form::label('first_name', 'First name') !!}
-    {!! Form::text('first_name', null, ['class' => 'form-control has-feedback']) !!}
-    @if ($errors->has('first_name'))
-        $first_name_error = $errors->pluck('first_name'));
-        <p>{{$first_name_error}}</p>}}
-    @endif
-  </div>
-  <div class="form-group">
     {!! Form::label('surname', 'Surname') !!}
-    {!! Form::text('surname', null, ['class' => 'form-control has-feedback']) !!}
-  </div>
+    {!! Form::text('surname', null, ['class' => 'form-control']) !!}
+
   <div class="form-group">
     {!! Form::label('email', 'Email address') !!}
     {!! Form::email('email', null, ['class' => 'form-control has-feedback']) !!}
@@ -53,5 +42,6 @@
         {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
       </div>
     </div>
+  </div>
 
     {!! Form::close() !!}
