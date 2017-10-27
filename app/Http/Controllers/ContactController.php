@@ -38,6 +38,15 @@ class ContactController extends Controller
   */
   public function store(Request $request)
   {
+    $validatedData = $request->validate([
+           'first_name' => 'required|alpha|max:60',
+           'surname' => 'required|aplha_dash|max:60',
+           'email' => 'required_without:telephone|nullable|email|max:100',
+           'telephone' => 'required_without:email|nullable|string',
+           'referral'=> 'nullable|integer',
+           'description'=>'required|filled',
+
+       ]);
     $contact = new Contact;
 
     $contact->first_name= $request->first_name;
@@ -45,7 +54,7 @@ class ContactController extends Controller
     $contact->email=$request->email;
     $contact->telephone=$request->telephone;
     $contact->referral_source=$request->referral;
-    $contact->description=$request->referral;
+    $contact->description=$request->description;
 
     $contact->save();
 

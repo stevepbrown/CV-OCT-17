@@ -17,9 +17,9 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('surname');
-            $table->string('email',50);
-            $table->string('telephone',15);
-            $table->tinyInteger('referral_source');
+            $table->string('email',50)->nullable;
+            $table->string('telephone',15)->nullable;
+            $table->tinyInteger('referral_source')->nullable;
             $table->longText('description');
             $table->timestamps();
         });

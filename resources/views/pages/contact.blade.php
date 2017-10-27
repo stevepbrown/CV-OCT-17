@@ -1,7 +1,7 @@
 @extends('layouts.layout-master')
 
-@section('keywords')
-@endsection
+{{-- @section('keywords')
+@endsection --}}
 
 @section('title')
   <title>Contact me</title>
