@@ -25,12 +25,14 @@ class ContactController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function create()
+  public function create(Request $request)
   {
-    return view('pages.contact');
+
+    $method = $request->method();
+    return view('pages.contact')->with('method',$method);
   }
 
-  /**
+  /*
   * Store a newly created resource in storage.
   *
   * @param  \Illuminate\Http\Request  $request
@@ -38,15 +40,14 @@ class ContactController extends Controller
   */
   public function store(Request $request)
   {
-    $validatedData = $request->validate([
+    $request->validate([
            'first_name' => 'required|alpha|max:60',
            'surname' => 'required|aplha_dash|max:60',
            'email' => 'required_without:telephone|nullable|email|max:100',
            'telephone' => 'required_without:email|nullable|string',
            'referral'=> 'nullable|integer',
            'description'=>'required|filled',
-
-       ])->with('input');
+       ]);
     $contact = new Contact;
 
     $contact->first_name= $request->first_name;
