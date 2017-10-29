@@ -16,20 +16,19 @@
 </head>
 <body>
   <!-- Container for bootstrap -->
-  <div id="div-main-container" class="container-fluid">
-    <div class="row">
+  <div id="div-bootstrap-container" class="container-fluid">
+    <div id="div-navigation" class="row">
       @yield('navigation')
     </div>
-    <div class="row">
-      <div id="content-container"class="container">
-        @yield('content')
-      </div>
+    <div id="div-content" class="row">
+      @yield('content')
     </div>
-    <div class="row">
-      <div class="container-fluid">
-        @yield('footer')
-      </div>
+    <div id="div-footer" class="row">
+      @yield('footer')
     </div>
   </div>
+
+
+
 </body>
 </html>

@@ -11,13 +11,6 @@ class Contact extends Model
  'telephone','referral_source', 'description',];
 
 
-// These are the attributes that will determine which bootstrap classes are used in the blade
-protected $contactAttributes [
-
-
-
-]
-
 
    public function codeReferral(){
 
@@ -25,9 +18,15 @@ protected $contactAttributes [
 
    }
 
-   public function lkpReferral(){
+   public function getReferral(){
 
      return $this->codeReferral;
+   }
+
+   public function lkpReferral(){
+
+     return codeReferral::all()->toArray();
+
    }
 
 

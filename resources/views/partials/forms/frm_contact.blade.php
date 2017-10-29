@@ -1,124 +1,51 @@
 
 {!! Form::token() !!}
 
+
 {!! Form::open(['route'=>'contacts.store']) !!}
 
 
-<div class="container rtb">
-  {{-- Check if there is an error in the first name and render
-  the form-group and form-control with necessary boostrap classes
-  --}}
-
-
-
-
-$surnameContainerAttributes,
-$surnameControlAttributes,
-$surnameMsgAttributes
-
-$emailContainerAttributes,
-$emailControlAttributes,
-$emailMsgAttributes
-
-$telephoneContainerAttributes,
-$telephoneControlAttributes,
-$telephoneMsgAttributes
-
-$referralContainerAttributes,
-$referralControlAttributes,
-$referralMsgAttributes
-
-
-    <div class="{{$firstNameContainerAttributes}}">
-      {!! Form::label('first_name', 'First Name') !!}
-      {!! Form::text('first_name', null, {{$firstNameControlAttributes}}) !!}
-      <p {{$firstNameMsgAttributes}}></p>
-    </div>
-
-    <div class="{{$surnameNameContainerClass}}">
-      {!! Form::label('surname', 'Surname') !!}
-      {!! Form::text('surname', null, ['class' => '{{$surnameTextClass}}']) !!}
-    </div>
-
-
-    <div class="form-group">
-      {!! Form::label('email', 'Email address') !!}
-      {!! Form::email('email', null, ['class' => 'form-control has-feedback']) !!}
-    </div>
-    <div class="form-group">
-      {!! Form::label('telephone', 'Telephone') !!}
-      {!! Form::text('telephone', null, ['class' => 'form-control has-feedback']) !!}
-    </div>
-    <div class="form-group">
-      <div class="form-group">
-        {!! Form::label('referral', 'Where did you hear about me?') !!}
-        {!! Form::select('referral',[
-          '1'=>'Job site',
-          '2'=>'Search engine e.g Google',
-          '3'=>'Email solicitation',
-          '4'=>'Other'],['class'=>'form-control']
-          )  !!}
-        </div>
-      </div>
-      <div class="form-group">
-        {!! Form::label('description', 'Message') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control has-feedback']) !!}
-      </div>
-  }
-@else
-
-
-
-@endif
-
-
-@if ($errors->has('first_name')) <!-- error  -->
-  <div class="form-group has-error has-feedback">
-    {!! Form::label('first_name', 'First Name') !!}
+<div class="container">
+  <div class="form-group{{ $errors->has('first_name')? ' has-feedback has-error' : '' }}">
+    {!! Form::label('first_name', 'First Name*') !!}
     {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
-    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-  </div>
-@else <!-- success -->
-  <div class="form-group has-success has-feedback">
-    {!! Form::label('first_name', 'First Name') !!}
-    {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
-    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-  </div>
-@endif
+    <small class="text-danger">{{ $errors->first('first_name') }}</small>
 
-<div class="form-group">
-  {!! Form::label('surname', 'Surname') !!}
-  {!! Form::text('surname', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-  {!! Form::label('email', 'Email address') !!}
-  {!! Form::email('email', null, ['class' => 'form-control has-feedback']) !!}
-</div>
-<div class="form-group">
-  {!! Form::label('telephone', 'Telephone') !!}
-  {!! Form::text('telephone', null, ['class' => 'form-control has-feedback']) !!}
-</div>
-<div class="form-group">
-  <div class="form-group">
+  </div>
+  <div class="form-group{{ $errors->has('surname') ? ' has-feedback has-error' : '' }}">
+    {!! Form::label('surname', 'Surname*') !!}
+    {!! Form::text('surname', null, ['class' => 'form-control']) !!}
+    <small class="text-danger">{{ $errors->first('surname') }}</small>
+  </div>
+  <div class="form-group{{ $errors->has('email') ? ' has-feedback  has-error' : '' }}">
+    {!! Form::label('email', 'Email address') !!}
+    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'eg: foo@bar.com']) !!}
+    <small class="text-danger">{{ $errors->first('email') }}</small>
+  </div>
+  <div class="form-group{{ $errors->has('telephone') ? ' has-feedback  has-error' : '' }}">
+    {!! Form::label('telephone', 'Telephone') !!}
+    {!! Form::text('telephone', null, ['class' => 'form-control']) !!}
+    <small class="text-danger">{{ $errors->first('telephone') }}</small>
+  </div>
+  <div class="form-group{{ $errors->has('referral') ? ' has-feedback  has-error' : '' }}">
     {!! Form::label('referral', 'Where did you hear about me?') !!}
-    {!! Form::select('referral',[
-      '1'=>'Job site',
-      '2'=>'Search engine e.g Google',
-      '3'=>'Email solicitation',
-      '4'=>'Other'],['class'=>'form-control']
-      )  !!}
-    </div>
+    {!! Form::select('referral',$lkupReferral , null, ['class' => 'form-control', 'placeholder'=>'Select referral source']) !!}
+    <small class="text-danger">{{ $errors->first('referral') }}</small>
   </div>
-  <div class="form-group">
-    {!! Form::label('description', 'Message') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control has-feedback']) !!}
+  <div class="form-group{{ $errors->has('description') ? ' has-feedback  has-error' : '' }}">
+    {!! Form::label('description', 'Message*') !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    <small class="text-danger">{{ $errors->first('description') }}</small>
   </div>
+
   <div class="form-group">
     <div class="container text-center">
       {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
     </div>
   </div>
+
 </div>
+
+
 
 {!! Form::close() !!}

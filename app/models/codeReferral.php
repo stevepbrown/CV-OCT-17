@@ -14,4 +14,5 @@ class codeReferral extends Model
 
     return $this->belongsTo(contact::class);
   }
+
 }

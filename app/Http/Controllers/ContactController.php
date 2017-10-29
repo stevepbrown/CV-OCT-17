@@ -25,11 +25,18 @@ class ContactController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function create(Request $request)
+  public function create()
   {
 
-    $method = $request->method();
-    return view('pages.contact')->with('method',$method);
+    $contact = new Contact;
+
+
+    // Pass the referral select options as an array
+    $lkupReferral = \App\models\codeReferral::all()->pluck('description','id');
+
+    return view('pages.contact')->with(['lkupReferral'=>$lkupReferral]);
+
+
   }
 
   /*
@@ -42,7 +49,7 @@ class ContactController extends Controller
   {
     $request->validate([
            'first_name' => 'required|alpha|max:60',
-           'surname' => 'required|aplha_dash|max:60',
+           'surname' => 'required|alpha_dash|max:60',
            'email' => 'required_without:telephone|nullable|email|max:100',
            'telephone' => 'required_without:email|nullable|string',
            'referral'=> 'nullable|integer',

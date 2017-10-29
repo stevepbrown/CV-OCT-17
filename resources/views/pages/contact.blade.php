@@ -9,7 +9,9 @@
 @endsection
 
 @section('content')
-  @include('partials.forms.frm_contact')
+  <div id="div-content-frm" class="col-xs-12 rtb">
+    @include('partials.forms.frm_contact')
+  </div>
 @endsection
 
 @section('footer')
