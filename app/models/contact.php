@@ -11,6 +11,13 @@ class Contact extends Model
  'telephone','referral_source', 'description',];
 
 
+// These are the attributes that will determine which bootstrap classes are used in the blade
+protected $contactAttributes [
+
+
+
+]
+
 
    public function codeReferral(){
 

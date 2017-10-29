@@ -1,10 +1,5 @@
 @extends('layouts.layout-master')
 
-{{dd($method)}}
-
-{{-- @section('keywords')
-@endsection --}}
-
 @section('title')
   <title>Contact me</title>
 @endsection
